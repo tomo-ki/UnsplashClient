@@ -1,11 +1,17 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
     namespace = "com.example.unsplashclient"
     compileSdk = 34
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     defaultConfig {
         applicationId = "com.example.unsplashclient"
@@ -73,4 +79,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     // Moshi-Kotlin
     implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.50")
+    ksp("com.google.dagger:hilt-android-compiler:2.50")
 }
